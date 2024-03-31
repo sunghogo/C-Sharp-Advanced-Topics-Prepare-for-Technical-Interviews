@@ -1,60 +1,35 @@
-﻿namespace Generics
+﻿using System.Globalization;
+using System.Reflection;
+
+namespace Generics
 {
-    // Creating reusable classes like this has performance disadvantages due to boxing and casting
-    //public class List
-    //{
-    //    public void Add(int numebr)
-    //    {
-    //        throw new NotImplementedException();
-    //    }
-    //    public int this[int index]
-    //    {
-    //        get
-    //        {
-    //            throw new NotImplementedException();
-    //        }
-    //    }
-    //}
-
-    //public class BookList
-    //{
-    //    public void Add(BookList book)
-    //    {
-    //        throw new NotImplementedException();
-
-    //    }
-
-    //    public BookList this[int index]
-    //    {
-    //        get
-    //        {
-    //            throw new NotImplementedException();
-    //        }
-    //    }
-    //}
-
-    //public class ObjectList
-    //{
-    //    public void Add(object value)
-    //    {
-    //        throw new NotImplementedException();
-
-    //    }
-
-    //    public object this[int index]
-    //    {
-    //        get
-    //        {
-    //            throw new NotImplementedException();
-    //        }
-    //    }
-    //}
-
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            //var book = new Book { Isbn = "1111", AssemblyTitleAttribute = "C# Advanced" };
+
+            //var numbers = new List();
+            //numbers.Add(10);
+
+            //var books = new BookList();
+            //books.Add(book);
+
+            var numbers = new GenericList<int>();
+            numbers.Add(10);
+
+            var books = new GenericList<Book>();
+            books.Add(new Book());
+
+            //System.Collections.Generic. will show a lit of built-in Generic 
+            var dictionary = new GenericDictionary<string, Book>();
+            dictionary.Add("1234", new Book());
+
+            //System.Nullable is the built-in struct for this class implementation
+            var number = new Nullable<int>(5);
+            Console.WriteLine($"Has Value ? {number.HasValue}");
+            Console.WriteLine($"Value: {number.GetValueOrDefault()}");
+
         }
     }
 }
